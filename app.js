@@ -1,10 +1,14 @@
 import express from 'express'
 import logger from 'morgan'
 import cors from 'cors'
+import dotenv from 'dotenv'
 
 import contactsRouter from './routes/api/contacts.js'
 
+
+dotenv.config()
 const app = express()
+
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
 
@@ -20,7 +24,8 @@ app.use((req, res) => {
 })
 
 app.use((err, req, res, next) => {
-   const {status=500, message='server error'}=err
+  const { status = 500, message = 'server error' } = err
+  console.log(err);
   res.status(status).json({ message: err.message })
 })
 
