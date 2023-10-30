@@ -1,11 +1,13 @@
 import express from 'express'
 
 import contactsController from '../../controllers/contacts-controller.js'
-import {isEmptyBody, isValidId} from '../../middlewares/index.js'
+import {isEmptyBody, isValidId, authenticate} from '../../middlewares/index.js'
 import { addContactSchema, addContactFavoriteSchema } from '../../models/contact.js'
 import validateBody from '../../decorators/validateBody.js'
 
 const contactsRouter = express.Router()
+
+contactsRouter.use(authenticate)
 
 //db_pass = 'EdZ7CPVPfsWcLuHL'
 
