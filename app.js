@@ -19,7 +19,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.use('/api/auth/',authRouter)
+app.use('/api/users/',authRouter)
 app.use('/api/contacts', contactsRouter)
 
 app.use((req, res) => {
